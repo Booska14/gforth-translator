@@ -1,0 +1,23 @@
+." 1." CR
+." Hello World" CR CR
+
+." 2." CR
+15 3 * 4 + 10 2 / - 7 - . CR CR
+
+." 3." CR
+15.0e 3.0e f* 4.0e f+ 10.0e 2.0e f/ f- 7.0e f- f. CR CR
+
+." 4." CR
+15.0e0 3.0e0 f* 4.0e0 f+ 10.0e0 2.0e0 f/ f- 7.0e0 f- f. CR CR
+
+." 5." CR
+15 s>f  3.0e0 f* 4.0e0 f+ 10 s>f 2.0e0 f/ f- 7 s>f f- f. CR CR
+
+." 6." CR
+: y 15 ;
+: x 3.0e0 ;
+y s>f x f* 4.0e0 f+ 10 s>f 2.0e0 f/ f- 7 s>f f- f. CR CR
+
+." 7." CR
+: result 2 3 < if 5 else 1 endif ;
+result . CR CR BYE
