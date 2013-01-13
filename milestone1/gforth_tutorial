@@ -20,4 +20,30 @@ y s>f x f* 4.0e0 f+ 10 s>f 2.0e0 f/ f- 7 s>f f- f. CR CR
 
 ." 7." CR
 : result 2 3 < if 5 else 1 endif ;
-result . CR CR BYE
+result . CR CR
+
+\ Might have to move this into antoher file to avoid the 'redefined error messages.'
+." 8." CR
+: x 2 ;
+: y 3 ;
+: result x y > if 
+		5 
+		else 1 
+		endif ;
+result . CR CR
+
+." 9." CR
+: value 11 5 ?DO i . LOOP ; value CR CR
+
+." 10. " CR
+: int_to_long
+s>d ;
+
+." 11. " CR
+: fact recursive
+	dup 0 > if
+		dup 1 - fact *
+	else
+		drop 1
+	endif ;
+CR BYE
