@@ -1,0 +1,6 @@
+: fact recursive
+        dup 0 > if
+                dup 1 - fact *
+        else
+                drop 1
+        endif ;

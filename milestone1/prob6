@@ -1,0 +1,4 @@
+: y 15 ;
+: x 3.0e0 ;
+y s>f x f* 4.0e0 f+ 10 s>f 2.0e0 f/ f- 7 s>f f- f. CR
+BYE
