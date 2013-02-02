@@ -13,6 +13,5 @@ def parseFile(fileName):
 			continue
 		tokens = string.split(line, ' ')
 		for token in tokens:
-			t = (scanner.getToken(token))
-			prin
+			symbolTable add(scanner.getToken(token))
 		line_number += 1
