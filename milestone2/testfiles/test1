@@ -25,4 +25,7 @@ x
 iff
 //<keyword, "println">
 println
+//<leftparen, "("><keyword,"while"> <boolean, "false"><leftparen, "(">  <keyword, "println"> <integer, "5"><rightparen, ")"> <rightparen, ")">
+( while false ( println 5 ) )
+
 
