@@ -1,38 +1,51 @@
 import symbolTable
 import Token
-
-#+ 1 2
-
-# word1 = Token("Operator","+")
-# wordList.add(word1)
-# dic[word1.word] = word1
-#dic[1] = {["+", word1], ["Integer", "1"], ["Integer", "1"]}
+import re
+import string
 
 def getToken(word):
 	if isOperator(word):
-		return(t = Token("Operator", word))
+		t = ["Operator", word]
+		return t
 	if isBoolean(word):
-		return(t = Token("Boolean", word))
+		t = ["Boolean", word]
+		return t
 	if isInteger(word):
-		return(t = Token("Integer", word))
+		t = ["Integer", word]
+		return t
 	if isReal(word):
-		return(t = Token("Boolean", word))
+		t = ["Real", word]
+		return t
 	if isString(word):
-		return(t = Token("String", word))
+		word = word.replace('"', '')
+		t = ["String", word]
+		return t
 	if isType(word):
-		return(t = Token("String", word))
+		t = ["Type", word]
+		return t
 	if isStatement(word):
-		return(t = Token("String", word))
-	#TODO: Might have to worry about tab characters
-	
-	
-		
+		t = ["Statement", word]
+		return t
+	if isLeftParen(word):
+		t = ["LeftParen", word]
+		return t
+	if isRightParen(word):
+		t = ["RightParen", word]
+		return t
+			
 def isComment(line):
-	regex = "^//"
-	return regex.match(word)
+	regex = re.compile("^//")
+	return regex.match(line)
+
+def isLeftParen(word):
+	return word == '('
+
+def isRightParen(word):
+	return word == ')'
 
 def isOperator(word):
-	operators = ['+', '-', '*', '/', '%', '^', 'and', 'or', 'not', 'iff']
+	#TODO: Should math functions be in here?
+	operators = ['+', '-', '*', '/', '%', '^', 'and', 'or', 'not', 'iff', '<', '=', 'sin', 'cos', 'tan', 'logn']
 	return word in operators
 
 def isBoolean(word):
@@ -44,11 +57,12 @@ def isInteger(word):
 	return regex.match(word)
 
 def isReal(word):
-	regex = re.compile("^[1-9]\d*[.]$")
+	#TODO: allow zeroes
+	regex = re.compile("^((-?[1-9]\d*)|0)[.]\d+$")
 	return regex.match(word)
 
 def isString(word):
-	regex = re.compile("^\"\"$")
+	regex = re.compile("^\".*\"$")
 	return regex.match(word)
 
 def isType(word):
