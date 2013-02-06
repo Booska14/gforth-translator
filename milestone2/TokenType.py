@@ -1,7 +1,6 @@
-class TokenType:
-
+class Type():
     Keyword = 0
-    Paren = 1
+    LeftParen = 1
     Integer = 2
     Real = 3
     String = 4

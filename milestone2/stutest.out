@@ -1,19 +1,57 @@
-['LeftParen', '(']
-['RightParen', ')']
-['Integer', '456']
-['Real', '34532.234']
-None
-['String', 'hello world']
-['Real', '0.0']
-['Real', '0.01']
-['Real', '-1.0']
-None
-['LeftParen', '(']
-['Statement', 'if']
-['Boolean', 'true']
-['Integer', '5']
-['Integer', '10']
-['RightParen', ')']
-['Operator', '+']
-['Integer', '1']
-['Integer', '2']
+< LeftParen , ( >
+< RightParen , ) >
+< Integer , 456 >
+< Real , 34532.234 >
+< String , hello world >
+< Real , 0.0 >
+< Real , 0.01 >
+< Real , -1.0 >
+< LeftParen , ( >
+< Statement , if >
+< Boolean , true >
+< Integer , 5 >
+< Integer , 10 >
+< RightParen , ) >
+< Operator , + >
+< Integer , 1 >
+< Integer , 2 >
+< LeftParen , ( >
+< LeftParen , ( >
+< LeftParen , ( >
+< LeftParen , ( >
+< LeftParen , ( >
+< LeftParen , ( >
+< Statement , if >
+< RightParen , ) >
+< Identifier , hello >
+< RightParen , ) >
+< Integer , 89 >
+< RightParen , ) >
+< RightParen , ) >
+< RightParen , ) >
+< RightParen , ) >
+< Statement , let >
+< Statement , assign >
+< Statement , while >
+< Statement , if >
+< Identifier , asd >
+< LeftParen , ( >
+< Integer , 234290 >
+< RightParen , ) >
+< String , this is some text that should be in one string >
+< Operator , + >
+< Operator , = >
+< Operator , - >
+< Operator , * >
+< Operator , ^ >
+< Integer , 54 >
+< RightParen , ) >
+< Real , 34.454 >
+< Identifier , word >
+< Statement , if >
+< Statement , while >
+< Operator , / >
+< Operator , sin >
+< Operator , cos >
+< Operator , tan >
+< Integer , 34525345 >

@@ -20,16 +20,17 @@ clean:
 
 stutest.out:
 	chmod 755 stutest.py
-	./stutest.py test1 >> stutest.out
+	./stutest.py stutest.in >> stutest.out
 	chmod 755 stutest.out
+	cat stutest.out
 # Notice the next line. The `-' says to ignore the return code. This
 # is a way to have multiple tests of errors that cause non-zero return
 # codes.
-	#cat stutest2.in
-	#-compiler stutest2.in > stutest2.out
-	#cat stutest2.out
+#cat stutest2.in
+#-compiler stutest2.in > stutest2.out
+#cat stutest2.out
 
 proftest.out: compiler
 	cat $(PROFTEST)
-	compiler $(PROFTEST) > proftest.out
+	chmod 755 $(PROFTEST) > proftest.out
 	cat proftest.out

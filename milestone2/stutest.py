@@ -5,27 +5,35 @@ import scanner
 import symbolTable
 import sys
 import shlex
+import Token
 
 symbol_table = []
 def parseFile(fileName):
-	source_file = open(fileName, 'r')
-	line_number = 1
-	for line in source_file:
-		line = line.replace("\n", "")
-		line = line.replace("\t", " ")
-		if scanner.isComment(line):
-			continue
-		#tokens = string.split(line, ' ')
-		tokens = shlex.shlex(line)
-		tokens.wordchars += '.'
-		tokens.wordchars += '-'
-		for token in tokens:
-			t = (scanner.getToken(token))
-			symbol_table.append(t)
-		line_number += 1
-	for entry in symbol_table:
-		print(entry)
-	
+    source_file = open(fileName, 'r')
+    line_number = 1
+    for line in source_file:
+        lexeme_number = 1
+        if scanner.isComment(line):
+            continue
+        words = parseWords(line)
+        for word in words:
+            t = (scanner.getToken(word))
+            if t is not None:
+                symbol_table.append(t)
+                lexeme_number += 1
+        line_number += 1
+    for entry in symbol_table:
+        print(entry)
+
+def parseWords(line):
+    line = line.replace("\n", "")
+    line = line.replace("\t", " ")
+    line = line.replace("(", " ( ")
+    line = line.replace(")", " ) ")
+    words = shlex.shlex(line)
+    words.wordchars += '.'
+    words.wordchars += '-'
+    return words
 
 if __name__ == "__main__":
-	parseFile(sys.argv[1])
+    parseFile(sys.argv[1])
