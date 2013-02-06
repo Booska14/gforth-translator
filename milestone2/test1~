@@ -21,5 +21,5 @@
 -0.0
 //<leftparen, "("><keyword,"if"><boolean,"true"><integer, "5"><integer, "10"> <rightparen, ")">
 ( if true 5 10 )
-	+	1	2
+
 

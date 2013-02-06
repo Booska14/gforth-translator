@@ -20,7 +20,7 @@ clean:
 
 stutest.out:
 	chmod 755 stutest.py
-	./stutest.py test1 >> stutest.out
+	./stutest.py(test1) >> stutest.out
 	chmod 755 stutest.out
 # Notice the next line. The `-' says to ignore the return code. This
 # is a way to have multiple tests of errors that cause non-zero return
