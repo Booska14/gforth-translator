@@ -1,3 +1,4 @@
+Tokens: < Type, Lexeme >
 < LeftParen , ( >
 < RightParen , ) >
 < Integer , 456 >
@@ -55,3 +56,37 @@
 < Operator , cos >
 < Operator , tan >
 < Integer , 34525345 >
+Comments, denoted by a line starting with '//'
+//test data for milestone 2, '//' are comment lines and are to be ignored
+
+//comments will display the token that should be outputted by the
+
+//tokenizer
+
+//<leftparen, "("><rightparen ")">
+
+//<integer,"456">
+
+//<real,"34532.234">
+
+//Should be None.
+
+//<string, "hello world">
+
+//<real, "0.0"
+
+//<real, "0.0"
+
+//<real, "0.0"
+
+//Should be None
+
+//<leftparen, "("><keyword,"if"><boolean,"true"><integer, "5"><integer, "10"> <rightparen, ")">
+
+/////////
+
+Invalid input:
+2342.
+-0.0
+asdf0989
+>

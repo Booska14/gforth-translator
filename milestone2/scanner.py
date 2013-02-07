@@ -2,6 +2,7 @@ import symbolTable
 import TokenClass
 import re
 import string
+import Type
 
 def getToken(word):
     if isOperator(word):
