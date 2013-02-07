@@ -2,7 +2,6 @@
 import re
 import string
 import scanner
-import symbolTable
 import sys
 import shlex
 import Token
@@ -20,14 +19,19 @@ def parseFile(fileName):
                 comments.append(line)
                 continue
             words = parseWords(line)
-            for word in words:
-                t = (scanner.getToken(word))
-                if t is not None:
-                    symbol_table.append(t)
-                    lexeme_number += 1
-                else:
-                    not_tokens.append(word)
-            line_number += 1
+            try:
+                for word in words:
+                    t = (scanner.getToken(word))
+                    if t is not None:
+                        symbol_table.append(t)
+                        lexeme_number += 1
+                    else:
+                        not_tokens.append(word)
+                line_number += 1
+            except ValueError as e:
+                print ("error in line: " + str(line_number))
+                print ("line content: " + line)
+                print e
 
 def printTokens():
     print "Tokens: < Type, Lexeme >"

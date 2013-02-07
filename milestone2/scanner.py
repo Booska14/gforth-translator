@@ -1,4 +1,3 @@
-import symbolTable
 import TokenClass
 import re
 import string
