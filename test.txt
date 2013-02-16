@@ -1,4 +1,0 @@
-this is some text from a file
-this is another line from the file
-blah
-
