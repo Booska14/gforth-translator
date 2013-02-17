@@ -1,39 +1,38 @@
-import TokenClass
+from Token import *
 import re
 import string
-import Type
 
 def getToken(word):
     if isOperator(word):
-        t = TokenClass.Token("Operator", word)
+        t = Token("Operator", word)
         return t
     if isBoolean(word):
-        t = TokenClass.Token("Boolean", word)
+        t = Token("Boolean", word)
         return t
     if isInteger(word):
-        t = TokenClass.Token("Integer", word)
+        t = Token("Integer", word)
         return t
     if isReal(word):
-        t = TokenClass.Token("Real", word)
+        t = Token("Real", word)
         return t
     if isString(word):
         word = word.replace('"', '')
-        t = TokenClass.Token("String", word)
+        t = Token("String", word)
         return t
     if isType(word):
-        t = TokenClass.Token("Type", word)
+        t = Token("Type", word)
         return t
     if isStatement(word):
-        t = TokenClass.Token("Statement", word)
+        t = Token("Statement", word)
         return t
     if isLeftParen(word):
-        t = TokenClass.Token("LeftParen", word)
+        t = Token("LeftParen", word)
         return t
     if isRightParen(word):
-        t = TokenClass.Token("RightParen", word)
+        t = Token("RightParen", word)
         return t
     if isIdentifier(word):
-        t = TokenClass.Token("Identifier", word)
+        t = Token("Identifier", word)
         return t
     return None
 

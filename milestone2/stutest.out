@@ -1,5 +1,9 @@
-error in line: 20
-line content: 'hello this is a strinbg
+error in line: 25
+line content: 'hello this is an incomplete string
+
+No closing quotation
+error in line: 28
+line content: 'what happens here?"
 
 No closing quotation
 Tokens: < Type, Lexeme >
@@ -60,6 +64,8 @@ Tokens: < Type, Lexeme >
 < Operator , cos >
 < Operator , tan >
 < Integer , 34525345 >
+< Identifier , _ >
+< String ,  >
 Comments, denoted by a line starting with '//'
 //test data for milestone 2, '//' are comment lines and are to be ignored
 
@@ -77,20 +83,39 @@ Comments, denoted by a line starting with '//'
 
 //<string, "hello world">
 
-//<real, "0.0"
+//<real, "0.0">
 
-//<real, "0.0"
+//<real, "0.01">
 
-//<real, "0.0"
+//<real, "0.0">
 
 //Should be None
 
 //<leftparen, "("><keyword,"if"><boolean,"true"><integer, "5"><integer, "10"> <rightparen, ")">
 
-/////////
+//series of statements
+
+//Should be invalid
+
+//Should be identified as identifier, leftParen, integer, and rightParen, repsectively.
+
+//<string, "this is some text that should be in one string">
+
+//Series of valid tokens
+
+//This string is incomplete and should not be recognized as a string.
+
+//Special Characters
+
+//Strings starting with single quotes and ending in double qoutes should not be recognized as a string by the scanner.
+
+//Null string
 
 Invalid input:
 2342.
 -0.0
 asdf0989
 >
+!
+@
+''
