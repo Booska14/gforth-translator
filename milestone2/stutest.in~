@@ -11,11 +11,11 @@
 2342.
 //<string, "hello world">
 "hello world"
-//<real, "0.0">
+//<real, "0.0"
 0.0
-//<real, "0.01">
+//<real, "0.0"
 0.01
-//<real, "0.0">
+//<real, "0.0"
 -1.0
 //Should be None
 -0.0
@@ -23,31 +23,13 @@
 ( if true 5 10 )
 	+	1	2
 ((((((if)hello)89))))
-
-//series of statements
+/////////
 let assign while if
-
-//Should be invalid
 asdf0989
-
-//Should be identified as identifier, leftParen, integer, and rightParen, repsectively.
 asd(234290)
-
-//<string, "this is some text that should be in one string">
 "this is some text that should be in one string"
-
-//Series of valid tokens
 + = - * ^ 54 ) 34.454 word if while / > sin cos tan
                                   34525345
 
-//This string is incomplete and should not be recognized as a string.
-'hello this is an incomplete string
+'hello this is a strinbg
 
-//Special Characters
-_ ! @ # $ % ^ & * ( ) - + = [ ] { } \ | ? > < . , ; :
-
-//Strings starting with single quotes and ending in double qoutes should not be recognized as a string by the scanner.
-'what happens here?"
-
-//Null string
-'' "" 
