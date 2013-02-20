@@ -33,6 +33,13 @@ BTable = dict([(LEFTPAREN, [S]), (RIGHTPAREN, []), (ATOM, [S]), (EOF, None)])
 predictiveParseTable = dict([(F, FTable), (T, TTable), (S, STable), (A, ATable), (B, BTable)])
 
 def parse(files, options, symbol_table):
+    """Parses the files using the symbol_table to determine what are atoms
+
+    files -- the files to be parsed
+    options -- the options specified by the user
+    symbol_table -- the symbol table defined by the tokenizer
+
+    """
     for fileName in files:
         print "parsing for file: " + fileName
         file_content = fileToString(fileName, options)
@@ -52,6 +59,8 @@ def parse(files, options, symbol_table):
                 raise ParserException("Parsing not correct")
 
 def shlexToList(sList):
+    """Takes a shlex object of the tokens and returns them as a list in stack order
+    """
     nextToken = sList.read_token()
     newList = []
 
@@ -61,6 +70,9 @@ def shlexToList(sList):
     return newList
 
 def printCharacterException(file_content, character):
+    """
+    prints the location of the error in the file
+    """
     stack = shlexToList(tokenizer.parseWords(file_content))
     stack.reverse()
     stack.insert(character - 1, ">>>>>")
@@ -69,6 +81,9 @@ def printCharacterException(file_content, character):
     print file
 
 def fileToString(fileName, options):
+    """
+    takes a file and converts it into a string while replacing newline character with a space. Adds a EOF symbol at the end
+    """
     file_content = ""
     with open(fileName, 'r') as file:
         for line in file:
@@ -80,6 +95,9 @@ def fileToString(fileName, options):
     return file_content
 
 def parseF():
+    """
+    Parse the input string starting with the production rule F
+    """
 
     character = 1
     symStack = []
@@ -109,9 +127,17 @@ def parseF():
         currentStack = symStack[-1]
 
 def getNextToken():
+    """
+    return the next token on the top of the stack
+    """
+
     return inputStack.pop()
 
 def replaceTopStack(stack, newTop):
+    """
+    pops the top symbol and replaces it with the appropiate production rule. the new stack is then returned
+    """
+
     stack.pop()
     newTop.reverse()
     stack.extend(newTop)
@@ -119,6 +145,9 @@ def replaceTopStack(stack, newTop):
     return stack
 
 def printProduction(production, ruleList):
+    """
+    Print out a formatted prodcution rule that was used. only used if the printProductionRules option is used
+    """
     if(optionPrintProductionRules in options):
         if len(ruleList) == 0:
              rule = "EPSILON"
@@ -127,6 +156,9 @@ def printProduction(production, ruleList):
         print production + " -> " + rule
 
 def getTerminalType(token):
+    """
+    return the Terminal type from the token
+    """
     if token == LEFTPAREN:
         return LEFTPAREN
     if token == RIGHTPAREN:
