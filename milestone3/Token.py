@@ -5,4 +5,4 @@ class Token():
     def __str__(self):
         return "< " + self.Type + " , " + self.Word + " >"
     def __repr__(self):
-        return self.__str__(self)
+        return self.__str__()
