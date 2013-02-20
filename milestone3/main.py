@@ -5,7 +5,7 @@ import parser
 import tokenizer
 from options import *
 
-options = []
+user_options = []
 files = []
 symbolTable = {}
 syntaxList = []
@@ -13,9 +13,9 @@ syntaxList = []
 
 def main(argv):
     parseInput(argv)
-    symbolTable = tokenizer.tokenize(files, options)
-    syntax = parser.parse(files, options, symbolTable)
-    printInfo()
+    symbolTable = tokenizer.tokenize(files, user_options)
+    parser.parse(files, user_options, symbolTable)
+    print "Done"
 
 def parseInput(argv):
     for i in range(1, len(argv)):
@@ -23,8 +23,15 @@ def parseInput(argv):
         if comArg[0] == '-':
             if comArg not in optionList:
                 print comArg + "is an illegal option, use `--help` to see a list of options"
+            elif comArg == optionhelp:
+                print "usage:"
+                print argv[0] + " [options] files"
+                print "options: "
+                for option in sorted(optionList.iterkeys()):
+                    print "  " + option + "   :   " + optionList[option]
+                exit(0)
             else:
-                options.append(comArg)
+                user_options.append(comArg)
         else:
             files.append(comArg)
 

@@ -16,7 +16,6 @@ def getToken(word):
         t = Token("Real", word)
         return t
     if isString(word):
-        word = word.replace('"', '')
         t = Token("String", word)
         return t
     if isType(word):

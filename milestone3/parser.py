@@ -42,8 +42,11 @@ def parse(files, options, symbol_table):
         symbolTable = symbol_table
         try:
             parseF()
+            print "All syntax OK for " + fileName
         except ParserException as e:
             print "message: " + e.value
+            print file_content
+            printCharacterException(file_content, e.character)
             print "file: " + fileName
             if(optionParseAll not in options):
                 raise ParserException("Parsing not correct")
@@ -56,6 +59,14 @@ def shlexToList(sList):
         newList.insert(0,nextToken)
         nextToken = sList.read_token()
     return newList
+
+def printCharacterException(file_content, character):
+    stack = shlexToList(tokenizer.parseWords(file_content))
+    stack.reverse()
+    stack.insert(character - 1, ">>>>>")
+    stack.insert(character + 1, "<<<<<")
+    file = " ".join(stack)
+    print file
 
 def fileToString(fileName, options):
     file_content = ""
@@ -85,7 +96,7 @@ def parseF():
             character += 1
         #if current stack is a terminal symbol
         elif currentStack in TerminalTypeList:
-            raise ParserException("Terminal Symbol reached with no match for: " + currentStack)
+            raise ParserException("Terminal Symbol reached with no match for: " + currentStack, character)
         else:
 
             newStackTop = predictiveParseTable[currentStack][terminalType]
@@ -93,7 +104,7 @@ def parseF():
                 printProduction(currentStack, newStackTop)
                 symStack = replaceTopStack(symStack, newStackTop)
             else:
-                raise ParserException("ProductionRuleError, the " + str(character) + " '" + currentToken + "' failed production rule for " + currentStack)
+                raise ParserException("ProductionRuleError, the " + str(character) + " '" + currentToken + "' failed production rule for " + currentStack, character)
 
         currentStack = symStack[-1]
 
@@ -108,8 +119,12 @@ def replaceTopStack(stack, newTop):
     return stack
 
 def printProduction(production, ruleList):
-    rule = " ".join(ruleList)
-    print production + " -> " + rule
+    if(optionPrintProductionRules in options):
+        if len(ruleList) == 0:
+             rule = "EPSILON"
+        else:
+            rule = " ".join(ruleList)
+        print production + " -> " + rule
 
 def getTerminalType(token):
     if token == LEFTPAREN:
