@@ -4,18 +4,21 @@
 #
 TESTFILESWORKING = testFiles/working/*
 TESTFILESFAIL = testFiles/fail/*
-OPTIONS = -r -a -t -z
+OPTIONS = -a -r -z
+TRANSLATOR = ./translator.py
+
+help:
+	$(TRANSLATOR) -h
 
 clean:
 	rm -f stutest.out *.pyc
 
 stutest.out:
 	touch stutest.out
-	chmod 755 main.py
-	./main.py $(OPTIONS) $(TESTFILESWORKING) $(TESTFILESFAIL)   >> stutest.out
+	chmod 755 $(TRANSLATOR)
+	$(TRANSLATOR) $(OPTIONS) $(TESTFILESWORKING) $(TESTFILESFAIL)   >> stutest.out
 	chmod 755 stutest.out
 
 proftest.out: compiler
-	cat $(PROFTEST)
-	compiler $(PROFTEST) > proftest.out
-	cat proftest.out
+	touch proftest.out
+	chmod 755 $(TRANSLATOR)

@@ -1,4 +1,4 @@
-from Token import *
+from token import *
 import re
 import string
 

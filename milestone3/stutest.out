@@ -1,0 +1,286 @@
+? is not a token
+(?)
+
+line # 1
+
+parsing for file: testFiles/working/test10.in
+F -> T F
+T -> ( S )
+S -> atom B
+B -> S
+S -> atom B
+B -> EPSILON
+F -> EPSILON
+All syntax OK for testFiles/working/test10.in
+parsing for file: testFiles/working/test1.in
+F -> T F
+T -> ( S )
+S -> atom B
+B -> EPSILON
+F -> T F
+T -> ( S )
+S -> ( A
+A -> S ) B
+S -> ( A
+A -> ) B
+B -> EPSILON
+B -> EPSILON
+F -> T F
+T -> ( S )
+S -> ( A
+A -> S ) B
+S -> ( A
+A -> S ) B
+S -> ( A
+A -> S ) B
+S -> atom B
+B -> EPSILON
+B -> EPSILON
+B -> EPSILON
+B -> EPSILON
+F -> EPSILON
+All syntax OK for testFiles/working/test1.in
+parsing for file: testFiles/working/test2.in
+F -> EPSILON
+All syntax OK for testFiles/working/test2.in
+parsing for file: testFiles/working/test3.in
+F -> T F
+T -> ( S )
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> atom B
+B -> EPSILON
+F -> T F
+T -> ( S )
+S -> ( A
+A -> S ) B
+S -> atom B
+B -> EPSILON
+B -> S
+S -> ( A
+A -> S ) B
+S -> atom B
+B -> EPSILON
+B -> EPSILON
+F -> EPSILON
+All syntax OK for testFiles/working/test3.in
+parsing for file: testFiles/working/test4.in
+F -> T F
+T -> ( S )
+S -> atom B
+B -> EPSILON
+F -> EPSILON
+All syntax OK for testFiles/working/test4.in
+parsing for file: testFiles/working/test5.in
+F -> T F
+T -> ( S )
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> atom B
+B -> EPSILON
+F -> EPSILON
+All syntax OK for testFiles/working/test5.in
+parsing for file: testFiles/working/test6.in
+F -> T F
+T -> ( S )
+S -> atom B
+B -> EPSILON
+F -> T F
+T -> ( S )
+S -> atom B
+B -> EPSILON
+F -> EPSILON
+All syntax OK for testFiles/working/test6.in
+parsing for file: testFiles/working/test7.in
+F -> T F
+T -> ( S )
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> ( A
+A -> ) B
+B -> S
+S -> ( A
+A -> ) B
+B -> S
+S -> ( A
+A -> ) B
+B -> EPSILON
+F -> T F
+T -> ( S )
+S -> atom B
+B -> EPSILON
+F -> T F
+T -> ( S )
+S -> atom B
+B -> EPSILON
+F -> T F
+T -> ( S )
+S -> atom B
+B -> EPSILON
+F -> T F
+T -> ( S )
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> atom B
+B -> EPSILON
+F -> EPSILON
+All syntax OK for testFiles/working/test7.in
+parsing for file: testFiles/working/test8.in
+F -> T F
+T -> ( S )
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> ( A
+A -> S ) B
+S -> atom B
+B -> S
+S -> ( A
+A -> S ) B
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> atom B
+B -> EPSILON
+B -> S
+S -> ( A
+A -> S ) B
+S -> atom B
+B -> S
+S -> atom B
+B -> S
+S -> atom B
+B -> EPSILON
+B -> EPSILON
+B -> EPSILON
+F -> EPSILON
+All syntax OK for testFiles/working/test8.in
+parsing for file: testFiles/fail/test10.in
+F -> T F
+T -> ( S )
+message: The following token was not accepted by the parser: ?
+(?) $
+( <<<<< ? ) >>>>> $
+file: testFiles/fail/test10.in
+parsing for file: testFiles/fail/test1.in
+F -> T F
+T -> ( S )
+S -> atom B
+message: ProductionRuleError, the 3 '$' failed production rule for B
+("hello this is text" $
+( "hello this is text" >>>>> $ <<<<<
+file: testFiles/fail/test1.in
+parsing for file: testFiles/fail/test2.in
+F -> T F
+T -> ( S )
+message: ProductionRuleError, the 2 '$' failed production rule for S
+( $
+( >>>>> $ <<<<<
+file: testFiles/fail/test2.in
+parsing for file: testFiles/fail/test3.in
+F -> T F
+T -> ( S )
+S -> atom B
+B -> S
+S -> atom B
+B -> EPSILON
+message: ProductionRuleError, the 5 ')' failed production rule for F
+(hello world)) $
+( hello world ) >>>>> ) <<<<< $
+file: testFiles/fail/test3.in
+parsing for file: testFiles/fail/test4.in
+message: ProductionRuleError, the 1 '34535325' failed production rule for F
+34535325 (3453)  (3453 4533)) $
+>>>>> 34535325 <<<<< ( 3453 ) ( 3453 4533 ) ) $
+file: testFiles/fail/test4.in
+parsing for file: testFiles/fail/test7.in
+message: ProductionRuleError, the 1 ')' failed production rule for F
+)() $
+>>>>> ) <<<<< ( ) $
+file: testFiles/fail/test7.in
+parsing for file: testFiles/fail/test8.in
+F -> T F
+T -> ( S )
+S -> atom B
+B -> EPSILON
+message: ProductionRuleError, the 4 ')' failed production rule for F
+(              45      )) $
+( 45 ) >>>>> ) <<<<< $
+file: testFiles/fail/test8.in
+parsing for file: testFiles/fail/test9.in
+F -> T F
+T -> ( S )
+S -> atom B
+B -> S
+S -> ( A
+A -> S ) B
+S -> atom B
+B -> S
+S -> ( A
+A -> S ) B
+S -> atom B
+B -> S
+S -> ( A
+A -> S ) B
+S -> atom B
+B -> EPSILON
+B -> S
+S -> ( A
+A -> S ) B
+S -> ( A
+A -> S ) B
+S -> atom B
+B -> EPSILON
+B -> EPSILON
+B -> EPSILON
+B -> S
+S -> atom B
+B -> EPSILON
+B -> S
+S -> ( A
+A -> S ) B
+S -> atom B
+B -> EPSILON
+message: ProductionRuleError, the 21 '$' failed production rule for B
+(45(34(54(78)((34)))34)(12342) $
+( 45 ( 34 ( 54 ( 78 ) ( ( 34 ) ) ) 34 ) ( 12342 ) >>>>> $ <<<<<
+file: testFiles/fail/test9.in
+Done

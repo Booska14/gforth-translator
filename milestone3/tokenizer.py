@@ -4,7 +4,7 @@ import string
 import scanner
 import sys
 import shlex
-import Token
+import token
 from options import *
 from translatorExceptions import *
 

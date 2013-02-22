@@ -32,7 +32,7 @@ BTable = dict([(LEFTPAREN, [S]), (RIGHTPAREN, []), (ATOM, [S]), (EOF, None)])
 
 predictiveParseTable = dict([(F, FTable), (T, TTable), (S, STable), (A, ATable), (B, BTable)])
 
-def parse(files, options, symbol_table):
+def parse(files, user_options, symbol_table):
     """Parses the files using the symbol_table to determine what are atoms
 
     files -- the files to be parsed
@@ -40,13 +40,17 @@ def parse(files, options, symbol_table):
     symbol_table -- the symbol table defined by the tokenizer
 
     """
+    global options
+    options = user_options
+
+    global symbolTable
+    symbolTable = symbol_table
+
     for fileName in files:
         print "parsing for file: " + fileName
         file_content = fileToString(fileName, options)
         global inputStack
         inputStack = shlexToList(tokenizer.parseWords(file_content))
-        global symbolTable
-        symbolTable = symbol_table
         try:
             parseF()
             print "All syntax OK for " + fileName
