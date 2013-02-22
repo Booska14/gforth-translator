@@ -4,7 +4,7 @@
 #
 TESTFILESWORKING = testFiles/working/*
 TESTFILESFAIL = testFiles/fail/*
-OPTIONS = -r -a
+OPTIONS = -r -a -t -z
 
 clean:
 	rm -f stutest.out *.pyc

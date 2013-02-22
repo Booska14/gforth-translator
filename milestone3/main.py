@@ -4,6 +4,7 @@ import string
 import parser
 import tokenizer
 from options import *
+from translatorExceptions import *
 
 user_options = []
 files = []
@@ -13,9 +14,14 @@ syntaxList = []
 
 def main(argv):
     parseInput(argv)
-    symbolTable = tokenizer.tokenize(files, user_options)
-    parser.parse(files, user_options, symbolTable)
-    print "Done"
+    try:
+        symbolTable = tokenizer.tokenize(files, user_options)
+        parser.parse(files, user_options, symbolTable)
+        print "Done"
+    except TokenizerException as e:
+        exit(0)
+    except ParserException as e:
+        exit(0)
 
 def parseInput(argv):
     for i in range(1, len(argv)):
@@ -34,10 +40,9 @@ def parseInput(argv):
                 user_options.append(comArg)
         else:
             files.append(comArg)
-
-def printInfo():
-    print "Syntax list"
-    print syntaxList
+    if len(files) == 0:
+        print "no files to parse"
+        exit(0)
 
 if __name__ == "__main__":
     main(sys.argv)

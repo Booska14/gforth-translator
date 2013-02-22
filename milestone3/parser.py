@@ -3,7 +3,7 @@ import sys
 import scanner
 import shlex
 import tokenizer
-from parserException import *
+from translatorExceptions import *
 from options import *
 
 #end of file token

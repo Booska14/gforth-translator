@@ -6,6 +6,7 @@ import sys
 import shlex
 import Token
 from options import *
+from translatorExceptions import *
 
 symbol_table = {}
 comments = []
@@ -30,21 +31,29 @@ def tokenize(files, options):
                             lexeme_number += 1
                         else:
                             not_tokens.append(word)
+                            raise TokenizerException(word, line, line_number)
                     line_number += 1
                 except ValueError as e:
                     print ("Tokenizer error in line: " + str(line_number))
                     print ("line content: " + line)
                     print e
 
+                except TokenizerException as e:
+                    print e
+                    if optionTokenizeAll not in options:
+                        raise e
+
     if(optionPrintTokens in options):
         printTokens()
+        printNotTokens()
+
 
     return symbol_table
 
 def printTokens():
     print "Tokens: < Type, Lexeme >"
     for entry in symbol_table:
-        print(entry)
+        print "< " + symbol_table[entry].Type + " , " + entry + " >"
 
 def printComments():
     print "Comments, denoted by a line starting with '//'"
