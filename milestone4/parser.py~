@@ -84,7 +84,7 @@ def printCharacterException(file_content, character):
     file = " ".join(stack)
     print file
 
-def fileToString(fileName, options=None):
+def fileToString(fileName, options):
     """
     takes a file and converts it into a string while replacing newline character with a space. Adds a EOF symbol at the end
     """

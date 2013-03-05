@@ -37,8 +37,7 @@ def populateStack(tokens):
 	    stack.append(token)
 
 def constructParseTree():
-    while len(stack) > 1:
-    
+    while len(stack)
 
 def parseInput(argv):
     for i in range(1, len(argv)):
