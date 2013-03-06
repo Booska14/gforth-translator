@@ -84,13 +84,11 @@ def isWhitespace(word):
     return word in words
 
 def isConstant(word):
-    token = word.Word
     return(isBoolean(word) or isInteger(word) or isReal(word) or isString(word))
 
 def getArgCount(word):
-    token = word.Word
     twoOperators = ['+', '-', '*', '/', '%', '^', 'and', 'or', '<', '=']
     if token in twoOperators:
         return 2
     else:
-        return 3
+        return 1

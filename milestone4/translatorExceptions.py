@@ -18,3 +18,11 @@ class TokenizerException(Exception):
         print self.line
         print "line # " + str(self.lineNumber)
         return ""
+
+
+class ParseTreeException(Exception):
+    def __init__(self, node):
+        self.node = node
+
+    def __str__(self):
+        return node + " failure"
