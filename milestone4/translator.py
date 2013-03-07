@@ -5,6 +5,9 @@ import parser
 import tokenizer
 from options import *
 from translatorExceptions import *
+import buildTree
+import treeTraversal
+from node import *
 
 user_options = []
 files = []
@@ -18,27 +21,16 @@ def main(argv):
     try:
         symbolTable = tokenizer.tokenize(files, user_options)
         parser.parse(files, user_options, symbolTable)
-        #print "Done"
+        for file in files:
+            tree = buildTree.createTree(parser.fileToString(file))
+            treeTraversal.printTreeTraversal(tree)
     except TokenizerException as e:
         exit(0)
     except ParserException as e:
         exit(0)
-    # convert the contents of the file to a string
-    file_content = parser.fileToString(files[0])
-    # Tokenize the string
-    tokens = parser.shlexToList(tokenizer.parseWords(file_content))
-    # add each non-paren token to the stack
 
-#input: Each token in the input file
-#output: Adds each non-paren element to the stack
-def populateStack(tokens):
-    for token in tokens:
-        if token.Word != ')' and token.Word != '(':
-	    stack.append(token)
+    #print "y'all code is translated"
 
-def constructParseTree():
-    while len(stack) > 1:
-    
 
 def parseInput(argv):
     for i in range(1, len(argv)):

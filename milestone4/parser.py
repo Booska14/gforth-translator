@@ -47,13 +47,11 @@ def parse(files, user_options, symbol_table):
     symbolTable = symbol_table
 
     for fileName in files:
-        print "parsing for file: " + fileName
         file_content = fileToString(fileName, options)
         global inputStack
         inputStack = shlexToList(tokenizer.parseWords(file_content))
         try:
             parseF()
-            print "All syntax OK for " + fileName
         except ParserException as e:
             print "message: " + e.value
             print file_content

@@ -26,3 +26,10 @@ class ParseTreeException(Exception):
 
     def __str__(self):
         return node + " failure"
+
+class CreateParseTreeException(Exception):
+    def __init__(self, stack):
+        self.stack = stack
+
+    def __str__(self):
+        return stack

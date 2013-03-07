@@ -47,7 +47,7 @@ def isRightParen(word):
 
 def isOperator(word):
     #TODO: Should math functions be in here?
-    operators = ['+', '-', '*', '/', '%', '^', 'and', 'or', 'not', 'iff', '<', '=', 'sin', 'cos', 'tan', 'logn']
+    operators = ['+', '-', '*', '/', '%', '^', 'and', 'or', 'not', 'iff', '<', '=', 'sin', 'cos', 'tan', 'logn', 'println']
     return word in operators
 
 def isBoolean(word):
@@ -72,7 +72,7 @@ def isType(word):
     return word in types
 
 def isStatement(word):
-    statements = ['println', 'if', 'while', 'let', 'assign']
+    statements = ['if', 'while', 'let', 'assign']
     return word in statements
 
 def isIdentifier(word):
@@ -86,9 +86,17 @@ def isWhitespace(word):
 def isConstant(word):
     return(isBoolean(word) or isInteger(word) or isReal(word) or isString(word))
 
+def isRealOperator(word):
+    realOperator = ['sin','cos','tan', '+','-','*','/','%','^','<','=']
+    return word in realOperator
+
+def isBooleanOperator(word):
+    booleanOperator = ['and', 'or', 'not', 'iff']
+    return word in booleanOperator
+
 def getArgCount(word):
-    twoOperators = ['+', '-', '*', '/', '%', '^', 'and', 'or', '<', '=']
-    if token in twoOperators:
+    twoOperators = ['+', '-', '*', '/', '%', '^', 'and', 'or', '<', '=', 'iff']
+    if word in twoOperators:
         return 2
     else:
         return 1

@@ -2,22 +2,22 @@
 # INSTRUCTION
 # Quoted strings are to be filled in by student
 #
-TESTFILESWORKING = testFiles/working/*
-TESTFILESFAIL = testFiles/fail/*
-OPTIONS = -a -r -z
+TESTFILES = test1.in
+OPTIONS =
 TRANSLATOR = ./translator.py
 
 help:
 	$(TRANSLATOR) -h
 
 clean:
-	rm -f stutest.out *.pyc
+	rm -f stutest.fs *.pyc
 
 stutest.out:
-	touch stutest.out
+	touch stutest.fs
 	chmod 755 $(TRANSLATOR)
-	$(TRANSLATOR) $(OPTIONS) $(TESTFILESWORKING) $(TESTFILESFAIL)   >> stutest.out
-	chmod 755 stutest.out
+	$(TRANSLATOR) $(OPTIONS) $(TESTFILES) > stutest.fs
+	chmod 755 stutest.fs
+	gforth stutest.fs
 
 proftest.out: compiler
 	touch proftest.out
