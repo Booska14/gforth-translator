@@ -88,6 +88,8 @@ def printTreeTraversalHelper(currentNode):
             # type conversion needed to float
             elif (((leftType == "Integer" and rightType == "Real") or (leftType == "Real" and rightType == "Integer")) and not scanner.isBooleanOperator(currentNode.data)):
                 print "s>f"
+                if (currentNode.data == "/" or currentNode.data == "-") and leftType == "Integer":
+                    print "fswap"
                 print "f" + itblToGforth(currentNode.data)
                 return "Real"
             else:
