@@ -23,13 +23,16 @@ def main(argv):
         parser.parse(files, user_options, symbolTable)
         for file in files:
             tree = buildTree.createTree(parser.fileToString(file))
+            print "\\ gforth code for file: " + file
             treeTraversal.printTreeTraversal(tree)
+            print ""
     except TokenizerException as e:
         exit(0)
     except ParserException as e:
         exit(0)
 
     #print "y'all code is translated"
+    print "bye"
 
 
 def parseInput(argv):
